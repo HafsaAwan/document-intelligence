@@ -22,7 +22,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Only allow our frontend
+    allow_origins=["http://localhost:3000", "https://document-intelligence-ten.vercel.app/"],  # Only allow our frontend
     # You can restrict this to ["http://localhost:3000"] for more security
     allow_credentials=True,
     allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
