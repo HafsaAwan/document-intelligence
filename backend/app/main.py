@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # Import our new API routers
 from app.api.routes import upload
 from app.api.routes import chat
+from app.api.routes import reset
 
 # Create an "instance" of the FastAPI class
 # This 'app' variable is the main entry point for our entire backend
@@ -34,7 +35,7 @@ app.add_middleware(
 # defined in the 'upload' and 'chat' routers.
 app.include_router(upload.router, prefix="/api", tags=["Upload"])
 app.include_router(chat.router, prefix="/api", tags=["Chat"])
-
+app.include_router(reset.router, prefix="/api", tags=["Reset"])
 
 
 
