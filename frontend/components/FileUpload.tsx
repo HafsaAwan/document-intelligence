@@ -29,7 +29,7 @@ export function FileUpload({ onUploadSuccess, onUploadError }: FileUploadProps) 
 
       console.log('Starting real file upload...');
 
-      const response = await fetch('http://localhost:8000/api/upload', {
+      const response = await fetch('document-intelligence-production-6269.up.railway.app/api/upload', {
         method: 'POST',
         body: formData,
       });
