@@ -26,7 +26,7 @@ export default function Home() {
     console.log('Sending real message to backend:', message);
 
     try {
-      const response = await fetch('document-intelligence-production-6269.up.railway.app/api/chat', {
+      const response = await fetch('https://document-intelligence-production-6269.up.railway.app/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

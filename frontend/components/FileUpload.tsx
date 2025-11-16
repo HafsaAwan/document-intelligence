@@ -29,15 +29,24 @@ export function FileUpload({ onUploadSuccess, onUploadError }: FileUploadProps) 
 
       console.log('Starting real file upload...');
 
-      const response = await fetch('document-intelligence-production-6269.up.railway.app/api/upload', {
+      const response = await fetch('https://document-intelligence-production-6269.up.railway.app/api/upload', {
         method: 'POST',
         body: formData,
       });
 
       if (!response.ok) {
-        // Try to parse the error message from the backend
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Upload failed');
+        let errorMessage = `Upload failed with status ${response.status}.`;
+    
+        // Safely attempt to parse the JSON body for a detailed error
+        try {
+            const errorData = await response.json();
+            errorMessage = errorData.detail || errorMessage;
+        } catch (e) {
+            // If parsing fails (due to empty body, etc.), use the status message
+        }
+        
+        // Use the resulting error message
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
